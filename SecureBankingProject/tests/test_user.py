@@ -11,9 +11,14 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
+def test_bcrypt_password():
+    password = b"securepassword"
+    hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+    assert bcrypt.checkpw(password, hashed)
+
 def test_valid_user():
     user = User(
-        user_id=1,
+        user_id="1",
         username="JohnDoe_92",
         email="johndoe@example.com",
         password_hash=hash_password("SecurePassword123!"),  # Properly hashed
@@ -25,7 +30,7 @@ def test_valid_user():
 def test_invalid_username():
     with pytest.raises(ValueError):
         User(
-            user_id=2,
+            user_id="2",
             username="*baduser!",
             email="baduser@example.com",
             password_hash=hash_password("SecurePassword123!"),
@@ -36,7 +41,7 @@ def test_invalid_username():
 def test_invalid_password_hash():
     with pytest.raises(ValueError):
         User(
-            user_id=3,
+            user_id="3",
             username="secureuser",
             email="secure@example.com",
             password_hash="not_a_real_hash",  # Invalid hash format
