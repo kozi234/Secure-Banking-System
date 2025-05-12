@@ -1,0 +1,5 @@
+2025-03-10 03:15:42,501 [INFO] ✅ Transaction completed for user_id=12345, amount=$350.00
+2025-03-10 03:15:42,502 [WARNING] ⚠️ Policy violation: withdrawal exceeded transaction limit
+2025-03-10 03:15:42,503 [INFO] 🔐 User login: user_id=12345 from IP 192.168.1.5
+2025-03-10 03:15:42,504 [WARNING] 🚫 Failed login attempt for username='admin'
+2025-03-10 03:15:42,505 [ERROR] 🚨 Multiple failed login attempts detected for user_id=12345
